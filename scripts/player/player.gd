@@ -1,0 +1,33 @@
+extends CharacterBody2D
+
+const SPEED = 150.0
+
+# Animations are handled in here 
+func _process(delta: float) -> void:
+	handle_animations()
+
+
+# Determines player movement
+func _physics_process(delta: float) -> void:
+	var direction = get_movement_vector()
+	velocity = direction * SPEED
+	move_and_slide()
+
+
+# This function will return a normailzed vector2 of the players movement
+func get_movement_vector() -> Vector2:
+	var movement_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	return movement_vector.normalized()
+
+
+# The handle animations function will check the players movement and
+func handle_animations() -> void:
+	var movement_vector = get_movement_vector()
+	
+	if movement_vector != Vector2.ZERO:
+		$AnimatedSprite2D.play("walking")
+	else:
+		$AnimatedSprite2D.play("idle")
+	
+	if movement_vector.x != 0:
+		$AnimatedSprite2D.flip_h = movement_vector.x < 0
