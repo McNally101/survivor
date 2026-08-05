@@ -18,7 +18,6 @@ func on_timer_timeout():
 	var viewport = get_viewport().size.y
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	var spawn_position = player.global_position + (random_direction * viewport/2)
-	print('spawn position = ', viewport)
 	var enemy: Node2D = basic_enemy_scene.instantiate()
 	enemy.global_position = spawn_position
 	get_parent().add_child(enemy)

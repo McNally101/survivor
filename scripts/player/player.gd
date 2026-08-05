@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
+var cursor = load("res://icon.svg")
+
 const SPEED = 125.0
 const ACCELERATION_SMOOTHING = 25
+
+var attack_radius: float = 100.00
 
 
 # Animations are handled in here 
@@ -14,6 +18,7 @@ func _physics_process(delta: float) -> void:
 	var direction = get_movement_vector()
 	var target_velocity = direction * SPEED
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
+	get_cursor_position()
 	move_and_slide()
 
 
@@ -34,3 +39,15 @@ func handle_animations() -> void:
 	
 	if movement_vector.x != 0:
 		$AnimatedSprite2D.flip_h = movement_vector.x < 0
+
+
+func get_cursor_position() -> void:
+	var mouse_position = get_global_mouse_position()
+	var distance_from_player = (position - mouse_position).length()
+	var direction_to_mouse = position.direction_to(mouse_position)
+	print('MOUSE POS LENGTH: ', mouse_position.length())
+	if distance_from_player < attack_radius:
+		$Target.global_position = mouse_position
+	else:
+		$Target.global_position = position + direction_to_mouse * attack_radius
+	

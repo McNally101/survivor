@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://oqfjtg5kgh48" path="res://resources/sprites/knight.png" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://g5rubqwr1c7x" path="res://scripts/player/player.gd" id="1_v6fml"]
 [ext_resource type="PackedScene" uid="uid://c30waxvau5j45" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
+[ext_resource type="Texture2D" uid="uid://brkymge3ik2jo" path="res://resources/sprites/target.png" id="4_lvxji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6fml"]
 atlas = ExtResource("1_p0vlq")
@@ -179,3 +180,6 @@ frame_progress = 0.7371753
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1670446862]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_sgd21")
+
+[node name="Target" type="Sprite2D" parent="." unique_id=1623202771]
+texture = ExtResource("4_lvxji")
