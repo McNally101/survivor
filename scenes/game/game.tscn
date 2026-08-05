@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://d2v786ub4npp5"]
 
 [ext_resource type="PackedScene" uid="uid://dprq7u7vina7m" path="res://scenes/game_camera/game_camera.tscn" id="1_kelw5"]
+[ext_resource type="PackedScene" uid="uid://xbq3jnccw5ob" path="res://scenes/manager/enemy_manager.tscn" id="1_lfrn8"]
 [ext_resource type="Texture2D" uid="uid://cvee1lj5sdsda" path="res://resources/Tilemap/tilemap_packed.png" id="2_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://bvthpggar75wq" path="res://scenes/player/player.tscn" id="3_5i0tg"]
-[ext_resource type="PackedScene" uid="uid://b0v8xgkhm4s38" path="res://scenes/basic_enemy/basic_enemy.tscn" id="4_bdhmt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qbsmt"]
 texture = ExtResource("2_lfrn8")
@@ -61,9 +61,6 @@ tile_set = SubResource("TileSet_a84pu")
 
 [node name="Player" parent="." unique_id=1657694777 instance=ExtResource("3_5i0tg")]
 z_index = 1
-position = Vector2(162, 90)
+position = Vector2(318, 209)
 
-[node name="Enemies" type="Node" parent="." unique_id=952960164]
-
-[node name="BasicEnemy" parent="Enemies" unique_id=1988133071 instance=ExtResource("4_bdhmt")]
-position = Vector2(324, 239)
+[node name="EnemyManager" parent="." unique_id=1212996789 instance=ExtResource("1_lfrn8")]

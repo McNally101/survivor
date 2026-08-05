@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 150.0
+const SPEED = 125.0
+const ACCELERATION_SMOOTHING = 25
+
 
 # Animations are handled in here 
 func _process(delta: float) -> void:
@@ -10,7 +12,8 @@ func _process(delta: float) -> void:
 # Determines player movement
 func _physics_process(delta: float) -> void:
 	var direction = get_movement_vector()
-	velocity = direction * SPEED
+	var target_velocity = direction * SPEED
+	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
 
 

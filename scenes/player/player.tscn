@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://oqfjtg5kgh48" path="res://resources/sprites/knight.png" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://g5rubqwr1c7x" path="res://scripts/player/player.gd" id="1_v6fml"]
+[ext_resource type="PackedScene" uid="uid://c30waxvau5j45" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6fml"]
 atlas = ExtResource("1_p0vlq")
@@ -161,7 +162,12 @@ radius = 5.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1657694777 groups=["player"]]
 collision_layer = 0
+motion_mode = 1
 script = ExtResource("1_v6fml")
+
+[node name="AbilityManager" type="Node" parent="." unique_id=2131039869]
+
+[node name="SwordAbilityController" parent="AbilityManager" unique_id=1856919851 instance=ExtResource("2_gmlin")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1342870548]
 position = Vector2(0, -12)

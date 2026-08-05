@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
-var speed = 30.0
+var speed = 50.0
+
+func _ready() -> void:
+	$Area2D.area_entered.connect(on_area_entered)
 
 
 func _physics_process(delta: float) -> void:
@@ -13,7 +16,9 @@ func _physics_process(delta: float) -> void:
 func get_direction_to_player():
 	var player = get_tree().get_first_node_in_group("player")
 	if player != null:
-		# This can be achieved with the function below
-		#return (player.position - global_position).normalized()
 		return global_position.direction_to(player.position)
 	return Vector2.ZERO
+
+
+func on_area_entered(other_area: Area2D):
+	queue_free()
