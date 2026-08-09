@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b0v8xgkhm4s38"]
+
+[ext_resource type="Script" uid="uid://ypdjhxf34dro" path="res://entities/enemies/rat/rat.gd" id="1_2e2pf"]
+[ext_resource type="PackedScene" uid="uid://bd6qmydipylm7" path="res://abilities/projectiles/enemy_dagger/enemy_dagger.tscn" id="2_s11gw"]
+[ext_resource type="PackedScene" uid="uid://5av7jx0gkd2p" path="res://components/projectile/projectile.tscn" id="3_7cmdt"]
+[ext_resource type="PackedScene" uid="uid://dxsmrmw8grlf8" path="res://components/health/health.tscn" id="4_nphqv"]
+[ext_resource type="PackedScene" uid="uid://bnv5hkerbjspr" path="res://components/hurtbox/hurt_box.tscn" id="5_u58wc"]
+[ext_resource type="Texture2D" uid="uid://ci5b323abr7c2" path="res://assets/Tiles/tile_0124.png" id="6_ciplh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgd21"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3owy"]
+radius = 5.0
+
+[node name="Rat" type="CharacterBody2D" unique_id=1988133071 groups=["enemy"]]
+z_index = 1
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_2e2pf")
+projectile = ExtResource("2_s11gw")
+
+[node name="ProjectileController" parent="." unique_id=909168493 instance=ExtResource("3_7cmdt")]
+projectile = ExtResource("2_s11gw")
+projectile_speed = 100.0
+attack_rate = 1.5
+attack_recovery = 1.0
+
+[node name="Health" parent="." unique_id=1281506714 instance=ExtResource("4_nphqv")]
+max_health = 100.0
+
+[node name="HurtBox" parent="." unique_id=1283321871 node_paths=PackedStringArray("health") instance=ExtResource("5_u58wc")]
+collision_layer = 8
+collision_mask = 4
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=308459195]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_sgd21")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1755526025]
+position = Vector2(0, -4)
+texture = ExtResource("6_ciplh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1470075855]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_p3owy")

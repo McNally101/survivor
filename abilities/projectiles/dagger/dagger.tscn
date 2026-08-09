@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bleenfqqqkjts"]
+
+[ext_resource type="Script" uid="uid://drdodvfs2muk8" path="res://abilities/projectiles/dagger/dagger.gd" id="1_026wu"]
+[ext_resource type="PackedScene" uid="uid://dofpefjyanhpr" path="res://components/damage/damage.tscn" id="2_4c1m2"]
+[ext_resource type="Texture2D" uid="uid://0ghmb5f4v0wk" path="res://assets/Tiles/tile_0103.png" id="2_nj52m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3owy"]
+size = Vector2(4, 6)
+
+[node name="Dagger" type="Node2D" unique_id=670328325]
+z_index = 2
+script = ExtResource("1_026wu")
+
+[node name="Damage" parent="." unique_id=1802684917 instance=ExtResource("2_4c1m2")]
+collision_layer = 4
+collision_mask = 8
+damage_value = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage" unique_id=553382740]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_p3owy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2070582200]
+position = Vector2(0, -3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nj52m")

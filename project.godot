@@ -30,9 +30,13 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
-"res://resources/": "purple",
+"res://abilities/": "orange",
+"res://assets/": "purple",
+"res://components/": "yellow",
+"res://entities/": "teal",
 "res://scenes/": "green",
-"res://scripts/": "orange"
+"res://systems/": "pink",
+"res://ui/": "blue"
 }
 
 [input]
@@ -73,6 +77,8 @@ left_click={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Enemy Collision"
+2d_physics/layer_5="Enemy Attack"
+2d_physics/layer_6="Player Hurt"
 
 [physics]
 
