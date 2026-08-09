@@ -45,7 +45,6 @@ func get_cursor_position() -> void:
 	var mouse_position = get_global_mouse_position()
 	var distance_from_player = (position - mouse_position).length()
 	var direction_to_mouse = position.direction_to(mouse_position)
-	print('MOUSE POS LENGTH: ', mouse_position.length())
 	if distance_from_player < attack_radius:
 		$Target.global_position = mouse_position
 	else:

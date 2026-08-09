@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b0wfdnpha33ww"]
+
+[ext_resource type="Script" uid="uid://d1eb1uded8ewv" path="res://scripts/manager/projectile_controller.gd" id="1_j2cka"]
+[ext_resource type="PackedScene" uid="uid://bleenfqqqkjts" path="res://scenes/ability/projectile/dagger/dagger.tscn" id="2_ykip0"]
+
+[node name="ProjectileController" type="Node" unique_id=133424955]
+script = ExtResource("1_j2cka")
+projectile = ExtResource("2_ykip0")

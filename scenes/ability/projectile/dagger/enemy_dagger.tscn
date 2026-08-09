@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bd6qmydipylm7"]
+
+[ext_resource type="Script" uid="uid://drdodvfs2muk8" path="res://scripts/dagger.gd" id="1_am4i1"]
+[ext_resource type="Texture2D" uid="uid://0ghmb5f4v0wk" path="res://resources/Tiles/tile_0103.png" id="2_wnbno"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3owy"]
+size = Vector2(4, 6)
+
+[node name="Dagger" type="Node2D" unique_id=670328325]
+z_index = 2
+script = ExtResource("1_am4i1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1386466366]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=553382740]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_p3owy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2070582200]
+position = Vector2(0, -3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wnbno")

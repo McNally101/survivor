@@ -6,7 +6,6 @@ const SPAWN_RADIUS = 600
 
 
 func _ready() -> void:
-	print('WE GETTING ENEMIES BAI')
 	$Timer.timeout.connect(on_timer_timeout)
 	pass
 

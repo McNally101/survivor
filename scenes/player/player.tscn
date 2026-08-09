@@ -182,4 +182,5 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_sgd21")
 
 [node name="Target" type="Sprite2D" parent="." unique_id=1623202771]
+visible = false
 texture = ExtResource("4_lvxji")
