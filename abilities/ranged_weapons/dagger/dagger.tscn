@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bleenfqqqkjts"]
 
-[ext_resource type="Script" uid="uid://drdodvfs2muk8" path="res://abilities/projectiles/dagger/dagger.gd" id="1_026wu"]
+[ext_resource type="Script" uid="uid://drdodvfs2muk8" path="res://abilities/ranged_weapons/dagger/dagger.gd" id="1_026wu"]
 [ext_resource type="PackedScene" uid="uid://dofpefjyanhpr" path="res://components/damage/damage.tscn" id="2_4c1m2"]
 [ext_resource type="Texture2D" uid="uid://0ghmb5f4v0wk" path="res://assets/Tiles/tile_0103.png" id="2_nj52m"]
 

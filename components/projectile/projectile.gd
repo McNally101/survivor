@@ -5,6 +5,7 @@ class_name ProjectileController
 @export var projectile_speed:float = 150.0
 @export var attack_rate:float = 0.5
 @export var attack_recovery:float = 0.2
+@export var faction: Faction.Type
 
 var attacking:bool = false
 var attack_cooldown:float = 0.0
@@ -32,5 +33,6 @@ func fire(direction: Vector2) -> void:
 	get_tree().current_scene.add_child(instance)
 	instance.global_position = owner.global_position
 	instance.reset_physics_interpolation()
+	instance.configure(faction)
 	instance.velocity = direction.normalized() * projectile_speed
 	

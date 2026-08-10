@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://g5rubqwr1c7x" path="res://entities/player/player.gd" id="1_26q78"]
 [ext_resource type="Texture2D" uid="uid://oqfjtg5kgh48" path="res://assets/sprites/knight.png" id="1_p0vlq"]
 [ext_resource type="PackedScene" uid="uid://dxsmrmw8grlf8" path="res://components/health/health.tscn" id="2_75vfm"]
-[ext_resource type="PackedScene" uid="uid://c30waxvau5j45" path="res://abilities/minion/sword_ability_controller.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://bnv5hkerbjspr" path="res://components/hurtbox/hurt_box.tscn" id="3_0owmy"]
 [ext_resource type="PackedScene" uid="uid://5av7jx0gkd2p" path="res://components/projectile/projectile.tscn" id="3_qek5x"]
-[ext_resource type="PackedScene" uid="uid://bleenfqqqkjts" path="res://abilities/projectiles/dagger/dagger.tscn" id="4_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://bleenfqqqkjts" path="res://abilities/ranged_weapons/dagger/dagger.tscn" id="4_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://brkymge3ik2jo" path="res://assets/sprites/target.png" id="4_lvxji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sgd21"]
@@ -178,17 +177,13 @@ projectile = ExtResource("4_5gtgg")
 projectile_speed = 250.0
 
 [node name="HurtBox" parent="." unique_id=1283321871 node_paths=PackedStringArray("health") instance=ExtResource("3_0owmy")]
-collision_layer = 32
-collision_mask = 16
+collision_layer = 0
+collision_mask = 0
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1934950969]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_sgd21")
-
-[node name="AbilityManager" type="Node" parent="." unique_id=2131039869]
-
-[node name="SwordAbilityController" parent="AbilityManager" unique_id=1856919851 instance=ExtResource("2_gmlin")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1342870548]
 position = Vector2(0, -12)

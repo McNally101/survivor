@@ -9,6 +9,7 @@ signal hit
 signal died
 signal health_changed(current: float, max: float)
 
+
 func _ready() -> void:
 	current_health = max_health
 

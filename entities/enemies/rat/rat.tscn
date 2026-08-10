@@ -1,11 +1,34 @@
 [gd_scene format=3 uid="uid://b0v8xgkhm4s38"]
 
 [ext_resource type="Script" uid="uid://ypdjhxf34dro" path="res://entities/enemies/rat/rat.gd" id="1_2e2pf"]
-[ext_resource type="PackedScene" uid="uid://bd6qmydipylm7" path="res://abilities/projectiles/enemy_dagger/enemy_dagger.tscn" id="2_s11gw"]
+[ext_resource type="Script" uid="uid://drdodvfs2muk8" path="res://abilities/ranged_weapons/dagger/dagger.gd" id="2_nphqv"]
 [ext_resource type="PackedScene" uid="uid://5av7jx0gkd2p" path="res://components/projectile/projectile.tscn" id="3_7cmdt"]
+[ext_resource type="PackedScene" uid="uid://dofpefjyanhpr" path="res://components/damage/damage.tscn" id="3_u58wc"]
+[ext_resource type="Texture2D" uid="uid://0ghmb5f4v0wk" path="res://assets/Tiles/tile_0103.png" id="4_ciplh"]
 [ext_resource type="PackedScene" uid="uid://dxsmrmw8grlf8" path="res://components/health/health.tscn" id="4_nphqv"]
+[ext_resource type="PackedScene" uid="uid://bleenfqqqkjts" path="res://abilities/ranged_weapons/dagger/dagger.tscn" id="4_s11gw"]
+[ext_resource type="Texture2D" uid="uid://da06qj8nobw5e" path="res://assets/Tiles/tile_0060.png" id="5_ciplh"]
 [ext_resource type="PackedScene" uid="uid://bnv5hkerbjspr" path="res://components/hurtbox/hurt_box.tscn" id="5_u58wc"]
 [ext_resource type="Texture2D" uid="uid://ci5b323abr7c2" path="res://assets/Tiles/tile_0124.png" id="6_ciplh"]
+[ext_resource type="PackedScene" uid="uid://chw00ahtite70" path="res://components/enemy_spawning/spawner_sequence.tscn" id="6_usq5k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnbno"]
+size = Vector2(4, 6)
+
+[sub_resource type="PackedScene" id="PackedScene_usq5k"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("Dagger", "Node2D", "z_index", "script", "Damage", "collision_layer", "collision_mask", "damage_value", "CollisionShape2D", "CollisionShape2D", "position", "shape", "Sprite2D", "Sprite2D", "position", "scale", "texture"),
+"node_count": 4,
+"node_ids": PackedInt32Array(670328325, 76254051, 1901853864, 2070582200),
+"node_paths": [NodePath("."), NodePath("./Damage"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 2147483647, 4, 2, 3, 5, 3, 6, 4, 7, 5, 0, 1073741825, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0, 1073741826, 0, 13, 12, -1, 3, 14, 8, 15, 9, 16, 10, 0),
+"variants": [2, ExtResource("2_nphqv"), ExtResource("3_u58wc"), 16, 0, 100.0, Vector2(0, -3), SubResource("RectangleShape2D_wnbno"), Vector2(0, -3), Vector2(0.5, 0.5), ExtResource("4_ciplh")],
+"version": 3
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sgd21"]
 radius = 12.0
@@ -19,21 +42,32 @@ collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_2e2pf")
-projectile = ExtResource("2_s11gw")
+projectile = SubResource("PackedScene_usq5k")
+
+[node name="SpawningCircle" type="Sprite2D" parent="." unique_id=1916895877]
+position = Vector2(0, -5)
+scale = Vector2(1.4513781, 1.4513781)
+texture = ExtResource("5_ciplh")
+
+[node name="SpawnerSequence" parent="." unique_id=1964476050 node_paths=PackedStringArray("summon_sprite", "entity_sprite") instance=ExtResource("6_usq5k")]
+summon_sprite = NodePath("../SpawningCircle")
+entity_sprite = NodePath("../Sprite2D")
 
 [node name="ProjectileController" parent="." unique_id=909168493 instance=ExtResource("3_7cmdt")]
-projectile = ExtResource("2_s11gw")
+projectile = ExtResource("4_s11gw")
 projectile_speed = 100.0
 attack_rate = 1.5
 attack_recovery = 1.0
+faction = 1
 
 [node name="Health" parent="." unique_id=1281506714 instance=ExtResource("4_nphqv")]
 max_health = 100.0
 
 [node name="HurtBox" parent="." unique_id=1283321871 node_paths=PackedStringArray("health") instance=ExtResource("5_u58wc")]
-collision_layer = 8
-collision_mask = 4
+collision_layer = 0
+collision_mask = 0
 health = NodePath("../Health")
+faction = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=308459195]
 position = Vector2(0, -5)
